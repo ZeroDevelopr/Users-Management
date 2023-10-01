@@ -5,16 +5,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/assets/materialize/css/materialize.min.css" />
+    <link rel="stylesheet" href="/assets/css/util.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css" />
     <title>Application</title>
 </head>
 
 <body>
-    <nav>
+    <nav class="amber accent-3 z-depth-2">
         <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Logo</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="#!" class="black-text">Home</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger black-text"><i
+                    class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="sass.html">Sass</a></li>
                 <li><a href="badges.html">Components</a></li>
@@ -25,10 +27,41 @@
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="/assets/image/banner.jpg" class="w-full">
+                </div>
+                <a href="#user"><img class="circle" src="/assets/image/avatar.jpg"></a>
+                <a href="#name"><span class="white-text name">Iman Ranjbar</span></a>
+                <a href="#email"><span class="white-text email">zerodeveloper@gmail.com</span></a>
+            </div>
+        </li>
+        <li>
+            <a class="waves-effect" href="https://github.com/ZeroDevelopr" >
+                <i class="material-icons">insert_link</i>
+                GitHub
+            </a>
+        </li>
+        <li>
+            <a class="waves-effect" href="https://www.linkedin.com/in/zerodevelopr">
+                <i class="material-icons">insert_link</i>
+                LinkedIn
+            </a>
+        </li>
+        <li><div class="divider"></div></li>
+        <li>
+            <a class="waves-effect" href="#!">
+                <i class="material-icons">home</i>
+                Home
+            </a>
+        </li>
+        <li>
+            <a class="waves-effect" href="#!">
+                <i class="material-icons">person</i>
+                Users
+            </a>
+        </li>
     </ul>
 
     <script src="/assets/materialize/js/materialize.min.js"></script>
