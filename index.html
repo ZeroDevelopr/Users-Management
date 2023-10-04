@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/assets/materialize/css/materialize.min.css" />
-    <link rel="stylesheet" href="/assets/css/util.css">
+    <link rel="stylesheet" href="/assets/css/output-tailwind.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css" />
     <title>Application</title>
@@ -16,7 +16,7 @@
     <!-- navbar section ---------start-------------------- -->
     <nav class="amber accent-3 z-depth-2">
         <div class="nav-wrapper">
-            <a href="#!" class="black-text">Home</a>
+            <a href="#!" class="black-text font-semibold">Home</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger black-text"><i
                     class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
@@ -32,9 +32,9 @@
         <li>
             <div class="user-view">
                 <div class="background">
-                    <img src="/assets/image/banner.jpg" class="sizefull">
+                    <img src="/assets/image/banner.jpg" alt="banner" class="w-full h-full">
                 </div>
-                <a href="#user"><img class="circle" src="/assets/image/avatar.jpg"></a>
+                <a href="#user"><img class="circle" src="/assets/image/avatar.jpg" alt="avatar"></a>
                 <a href="#name"><span class="white-text name">Iman Ranjbar</span></a>
                 <a href="#email"><span class="white-text email">zerodeveloper@gmail.com</span></a>
             </div>
@@ -71,10 +71,15 @@
 
 
     <!-- home section ---------start-------------------- -->
-    <section>
-        <img src="/assets/image/homepage-image.jpg" alt="Homepage Image" class="sizefull">
-        <a class="waves-effect waves-light btn amber accent-3 black-text">button</a>
-        <a class="waves-effect waves-light btn amber accent-3 black-text">button</a>
+    <section class="w-11/12 mx-auto mt-10 mb-10 flex flex-col items-stretch justify-center">
+        <img src="/assets/image/logo.png" alt="logo" class="w-6/12 mx-auto drop-shadow-lg">
+        <img src="/assets/image/homepage-image.jpg" alt="Homepage Image" class="w-full rounded-md mt-6 z-depth-2">
+        <a href="/users.html"
+            class="waves-effect waves-light btn amber accent-3 black-text rounded-md mt-6 z-depth-2 capitalize font-semibold">Users
+            Management</a>
+        <a href="https://example.com"
+            class="waves-effect waves-light btn amber accent-3 black-text rounded-md mt-6 z-depth-2 capitalize font-semibold">Donate
+            Us</a>
     </section>
     <!-- home section ---------end------- -->
 
