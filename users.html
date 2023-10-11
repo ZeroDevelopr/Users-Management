@@ -16,7 +16,8 @@
     <nav class="amber accent-3 z-depth-2">
         <div class="nav-wrapper max-md:flex flex-row-reverse justify-end items-center">
             <a href="#!" class="black-text font-semibold text-2xl md:hidden">Users Management</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger black-text md:hidden"><i class="fa-solid fa-bars fa-xl" style="color: #000000;"></i></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger black-text md:hidden"><i
+                    class="fa-solid fa-bars fa-xl" style="color: #000000;"></i></a>
             <ul class="h-full ml-3 max-md:hidden">
                 <li class="h-full flex items-center mx-1">
                     <a href="/index.html"
@@ -24,7 +25,8 @@
                 </li>
                 <li class="h-full flex items-center mx-1">
                     <a href="/users.html"
-                        class="black-text font-semibold text-2xl h-4/6 hover:bg-amber-200 rounded-md flex items-center">Users Management</a>
+                        class="black-text font-semibold text-2xl h-4/6 hover:bg-amber-200 rounded-md flex items-center">Users
+                        Management</a>
                 </li>
                 <li class="h-full flex items-center mx-1">
                     <a href="https://github.com/ZeroDevelopr"
@@ -80,7 +82,22 @@
     <!-- navbar section ---------end------- -->
 
     <!-- content section ---------start-------------------- -->
-    
+    <section id="top-actions-section" class="w-11/12 mx-auto my-10">
+        <!-- search section------ -->
+        <div class="input-field">
+            <input id="search" type="text" class="validate">
+            <label for="search">
+                <i id="icon-magnifier" class="fa-solid fa-magnifying-glass"></i>
+                Search
+            </label>
+        </div>
+        <!-- add button------ -->
+        <button
+            class="btn amber accent-3 black-text font-semibold capitalize text-xl w-full rounded-md waves-effect waves-light z-depth-2">
+            <i class="fa-solid fa-plus" style="color: #000000;"></i>
+            Add User
+        </button>
+    </section>
     <!-- content section ---------end------- -->
 
     <script src="/assets/materialize/js/materialize.min.js"></script>
