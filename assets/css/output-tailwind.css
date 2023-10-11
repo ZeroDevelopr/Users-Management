@@ -549,16 +549,8 @@ video {
   margin-bottom: 2.5rem;
 }
 
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
-
 .ml-3 {
   margin-left: 0.75rem;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
 }
 
 .mt-6 {
@@ -665,12 +657,16 @@ video {
     display: none;
   }
 
-  .md\:h-28 {
-    height: 7rem;
+  .md\:h-20 {
+    height: 5rem;
   }
 
-  .md\:text-5xl {
-    font-size: 3rem;
-    line-height: 1;
+  .md\:w-8\/12 {
+    width: 66.666667%;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 }
