@@ -2,10 +2,14 @@
     color: #9e9e9e;
 }
 
-.input-field input[type=text]:focus+label > #icon-magnifier {
+.input-field input[type=text]:focus+label>#icon-magnifier {
     color: #2ca89d;
 }
 
-.input-field input[type=text]:empty:not(:focus)+label > #icon-magnifier {
+.input-field input[type=text]:empty:not(:focus)+label>#icon-magnifier {
     color: inherit;
+}
+
+.user-list-item.active .user-item-arrow-icon {
+    transform: rotate(-180deg);
 }
