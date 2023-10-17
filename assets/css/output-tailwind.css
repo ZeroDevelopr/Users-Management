@@ -581,6 +581,10 @@ video {
   display: flex;
 }
 
+.table {
+  display: table;
+}
+
 .h-4\/6 {
   height: 66.666667%;
 }
@@ -599,6 +603,15 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.min-w-max {
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+
+.max-w-7xl {
+  max-width: 80rem;
 }
 
 .flex-row-reverse {
@@ -648,6 +661,11 @@ video {
   line-height: 2rem;
 }
 
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -674,6 +692,11 @@ video {
 .text-stone-700 {
   --tw-text-opacity: 1;
   color: rgb(68 64 60 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .drop-shadow-lg {
