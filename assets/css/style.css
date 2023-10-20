@@ -36,3 +36,15 @@ tbody>tr:last-child>td:first-child {
 tbody>tr:last-child>td:last-child {
     border-bottom-right-radius: 0.375rem;
 }
+
+tbody>tr:last-child {
+    border-style: none;
+}
+
+.border-none {
+    border-style: none !important;
+}
+
+.mb-0 {
+    margin-bottom: 0px !important;
+}
