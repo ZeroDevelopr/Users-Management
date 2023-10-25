@@ -92,7 +92,7 @@
             </label>
         </div>
         <!-- add button------ -->
-        <button
+        <button id="add-user-button"
             class="btn amber accent-3 black-text font-semibold capitalize text-xl w-full md:w-1/3 md:ml-6 rounded-md waves-effect waves-light z-depth-2">
             <i class="fa-solid fa-plus" style="color: #000000;"></i>
             Add User
@@ -225,7 +225,7 @@
         </div>
 
         <div
-            class="pagination-container bg-gray-900 w-full md:w-8/12 max-w-7xl mx-auto font-bold text-lg h-20 flex items-center justify-between rounded-t-3xl fixed bottom-0 left-0 right-0 z-depth-2">
+            class="pagination-container bg-gray-900 w-full md:w-8/12 max-w-7xl mx-auto font-bold text-lg h-20 flex items-center justify-between rounded-t-3xl fixed bottom-0 left-0 right-0 z-10 z-depth-2">
 
             <div
                 class="pagination-item-counts amber accent-3 text-black max-w-max ml-4 flex items-center rounded-full">
@@ -244,7 +244,43 @@
             </div>
 
         </div>
+
     </section>
+
+    <div id="add-user-modal-back" class="fixed w-full h-full bg-black/50 top-0 left-0 z-10 hidden"></div>
+    <div id="add-user-modal" class="w-full md:w-8/12 fixed h-2/3 bg-gray-900 left-0 right-0 -bottom-2/3 mx-auto z-10 rounded-t-3xl z-depth-3 transition-all duration-500 ease-in-out">
+        <div class="px-10 py-2">
+
+            <h5 class="font-semibold text-2xl amber-text text-accent-3 flex justify-center items-center mt-6">
+                <i class="fa-solid fa-user-plus mr-1" style="color: #ffc400;"></i>
+                Add User
+            </h5>
+
+            <form>
+                <div class="input-field">
+                    <input id="name" type="text" class="validate text-white">
+                    <label for="name">Name:</label>
+                </div>
+                <div class="input-field">
+                    <input id="username" type="text" class="validate text-white">
+                    <label for="username">Username:</label>
+                </div>
+                <div class="input-field">
+                    <input id="email" type="text" class="validate text-white">
+                    <label for="email">Email:</label>
+                </div>
+                <div class="input-field">
+                    <input id="address" type="text" class="validate text-white">
+                    <label for="address">Address:</label>
+                </div>
+
+                <div class="flex justify-center">
+                    <button type="button" class="btn amber accent-3 black-text font-bold capitalize text-xl w-36 rounded-md waves-effect waves-light">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
     <!-- content section ---------end------- -->
 
     <script src="/assets/materialize/js/materialize.min.js"></script>
