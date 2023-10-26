@@ -61,34 +61,3 @@ tbody>tr:last-child {
 #add-user-modal.show {
     bottom: 0;
 }
-
-@media (min-width: 768px) {
-    .md\:w-5\/12 {
-        width: 41.666667% !important;
-    }
-}
-
-@media (min-width: 768px) {
-    .md\:h-1\/2 {
-        height: 50% !important;
-    }
-}
-
-.px-0 {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-}
-
-.flex-wrap {
-    flex-wrap: wrap !important;
-}
-
-.justify-evenly {
-    justify-content: space-evenly !important;
-}
-
-@media (min-width: 768px) {
-    .md\:mt-5 {
-        margin-top: 1.25rem !important;
-    }
-}
