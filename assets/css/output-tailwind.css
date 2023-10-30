@@ -976,6 +976,10 @@ video {
     width: 66.666667%;
   }
 
+  .md\:bg-\[url\(\'\/assets\/image\/pattern\.png\'\)\] {
+    background-image: url('/assets/image/pattern.png');
+  }
+
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
