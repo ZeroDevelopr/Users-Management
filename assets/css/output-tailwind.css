@@ -780,10 +780,6 @@ video {
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\'\/assets\/image\/pattern\.png\'\)\] {
-  background-image: url('/assets/image/pattern.png');
-}
-
 .bg-cover {
   background-size: cover;
 }
