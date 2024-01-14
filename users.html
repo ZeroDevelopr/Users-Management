@@ -11,7 +11,7 @@
     <title>Application</title>
 </head>
 
-<body>
+<body x-data="usersData()">
     <!-- navbar section ---------start---------------------------------------------------------------- -->
     <!-- navbar ------ -->
     <nav class="amber accent-3 z-depth-2">
@@ -105,61 +105,37 @@
     <!-- top actions section ---------end---------------------------------- -->
 
     <!-- user list section ---------start---------------------------------------------------------------- -->
-    <section class="user-list-section w-11/12 max-w-7xl min-w-max md:w-8/12 mx-auto mt-6 mb-28">
+    <section class="user-list-section w-11/12 max-w-7xl min-w-max md:w-8/12 mx-auto mt-6 mb-28" x-init="initUsers()">
         <!-- user list in mobile mode ------ -->
         <ul class="collapsible popout md:hidden">
-            <li class="rounded-md bg-gray-900 user-list-item">
-                <div
-                    class="collapsible-header amber accent-3 black-text font-semibold rounded-md border-none -mt-2 z-depth-2">
-                    <i class="fa-solid fa-circle-chevron-down transition-all duration-500 ease-in-out user-item-arrow-icon"
-                        style="color: #000000;"></i>
-                    Iman Ranjbar
-                </div>
-                <div class="collapsible-body white-text text-sm rounded-b-md mb-2 border-none z-depth-2">
-                    <div class="float-right">
-                        <i class="fa-solid fa-trash-can fa-xl" style="color: #dc2626;"></i>
-                        <i class="fa-solid fa-pen-to-square fa-xl ml-1" style="color: #4f46e5;"></i>
+            <template x-for="user in users">
+                <li class="rounded-md bg-gray-900 user-list-item">
+                    <div
+                        class="collapsible-header amber accent-3 black-text font-semibold rounded-md border-none -mt-2 z-depth-2">
+                        <i class="fa-solid fa-circle-chevron-down transition-all duration-500 ease-in-out user-item-arrow-icon"
+                            style="color: #000000;"></i>
+                        <span x-text="user.name"></span>
                     </div>
-                    <div>
-                        <span>Username: </span>
-                        <span>zerodeveloper</span>
+                    <div class="collapsible-body white-text text-sm rounded-b-md mb-2 border-none z-depth-2">
+                        <div class="float-right">
+                            <i class="fa-solid fa-trash-can fa-xl" style="color: #dc2626;"></i>
+                            <i class="fa-solid fa-pen-to-square fa-xl ml-1" style="color: #4f46e5;"></i>
+                        </div>
+                        <div>
+                            <span>Username: </span>
+                            <span x-text="'@' + user.username"></span>
+                        </div>
+                        <div>
+                            <span>Email: </span>
+                            <span x-text="user.email"></span>
+                        </div>
+                        <div>
+                            <span>Address: </span>
+                            <span x-text="user.address.city + ' - ' + user.address.street"></span>
+                        </div>
                     </div>
-                    <div>
-                        <span>Email: </span>
-                        <span>info@example.com</span>
-                    </div>
-                    <div>
-                        <span>Address: </span>
-                        <span>Country - Test Street</span>
-                    </div>
-                </div>
-            </li>
-            <li class="rounded-md bg-gray-900 user-list-item">
-                <div
-                    class="collapsible-header amber accent-3 black-text font-semibold rounded-md border-none -mt-2 z-depth-2">
-                    <i class="fa-solid fa-circle-chevron-down transition-all duration-500 ease-in-out user-item-arrow-icon"
-                        style="color: #000000;"></i>
-                    Iman Ranjbar
-                </div>
-                <div class="collapsible-body white-text text-sm rounded-b-md mb-2 border-none z-depth-2">
-                    <div class="float-right">
-                        <i class="fa-solid fa-trash-can fa-xl" style="color: #dc2626;"></i>
-                        <i class="fa-solid fa-pen-to-square fa-xl ml-1" style="color: #4f46e5;"></i>
-                    </div>
-                    <div>
-                        <span>Username: </span>
-                        <span>zerodeveloper</span>
-                    </div>
-                    <div>
-                        <span>Email: </span>
-                        <span>info@example.com</span>
-                    </div>
-                    <div>
-                        <span>Address: </span>
-                        <span>Country - Test Street</span>
-                    </div>
-                </div>
-            </li>
+                </li>
+            </template>
         </ul>
         <!-- user list in desktop mode ------ -->
         <div class="max-md:hidden">
@@ -175,50 +151,19 @@
                     </tr>
                 </thead>
                 <tbody class="bg-gray-900">
-                    <tr>
-                        <td>1</td>
-                        <td>Iman Ranjbar</td>
-                        <td>zerodeveloper</td>
-                        <td>info@example.com</td>
-                        <td>Country - Test Street</td>
-                        <td>
-                            <i class="fa-solid fa-trash-can fa-xl" style="color: #dc2626;"></i>
-                            <i class="fa-solid fa-pen-to-square fa-xl ml-1" style="color: #4f46e5;"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Iman Ranjbar</td>
-                        <td>zerodeveloper</td>
-                        <td>info@example.com</td>
-                        <td>Country - Test Street</td>
-                        <td>
-                            <i class="fa-solid fa-trash-can fa-xl" style="color: #dc2626;"></i>
-                            <i class="fa-solid fa-pen-to-square fa-xl ml-1" style="color: #4f46e5;"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Iman Ranjbar</td>
-                        <td>zerodeveloper</td>
-                        <td>info@example.com</td>
-                        <td>Country - Test Street</td>
-                        <td>
-                            <i class="fa-solid fa-trash-can fa-xl" style="color: #dc2626;"></i>
-                            <i class="fa-solid fa-pen-to-square fa-xl ml-1" style="color: #4f46e5;"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Iman Ranjbar</td>
-                        <td>zerodeveloper</td>
-                        <td>info@example.com</td>
-                        <td>Country - Test Street</td>
-                        <td>
-                            <i class="fa-solid fa-trash-can fa-xl" style="color: #dc2626;"></i>
-                            <i class="fa-solid fa-pen-to-square fa-xl ml-1" style="color: #4f46e5;"></i>
-                        </td>
-                    </tr>
+                    <template x-for="user in users">
+                        <tr>
+                            <td x-text="user.id"></td>
+                            <td x-text="user.name"></td>
+                            <td x-text="'@' + user.username"></td>
+                            <td x-text="user.email"></td>
+                            <td x-text="user.address.city + ' - ' + user.address.street"></td>
+                            <td>
+                                <i class="fa-solid fa-trash-can fa-xl" style="color: #dc2626;"></i>
+                                <i class="fa-solid fa-pen-to-square fa-xl ml-1" style="color: #4f46e5;"></i>
+                            </td>
+                        </tr>
+                    </template>
                 </tbody>
             </table>
         </div>
@@ -278,6 +223,9 @@
     </div>
     <!-- add user modal ---------end---------------------------------- -->
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="/assets/js/alpineJsHandlers/usersHandler.js"></script>
     <script src="/assets/materialize/js/materialize.min.js"></script>
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/users.js"></script>
