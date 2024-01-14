@@ -106,6 +106,24 @@
 
     <!-- user list section ---------start---------------------------------------------------------------- -->
     <section class="user-list-section w-11/12 max-w-7xl min-w-max md:w-8/12 mx-auto mt-6 mb-28" x-init="initUsers()">
+        <!-- preloader animation ------ -->
+        <template x-if="isLoading">
+            <div class="flex justify-center absolute top-1/2 right-0 left-0">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-yellow-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
         <!-- user list in mobile mode ------ -->
         <ul class="collapsible popout md:hidden">
             <template x-for="user in users">

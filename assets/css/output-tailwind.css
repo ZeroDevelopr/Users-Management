@@ -538,6 +538,10 @@ video {
   position: fixed;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .-bottom-2\/3 {
   bottom: -66.666667%;
 }
@@ -556,6 +560,10 @@ video {
 
 .top-0 {
   top: 0px;
+}
+
+.top-1\/2 {
+  top: 50%;
 }
 
 .z-10 {
