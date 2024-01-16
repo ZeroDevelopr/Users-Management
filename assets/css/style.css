@@ -57,3 +57,7 @@ tbody>tr:last-child {
 .mb-0 {
     margin-bottom: 0px !important;
 }
+
+#add-user-modal.show {
+    bottom: 0;
+}
