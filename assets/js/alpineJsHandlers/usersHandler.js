@@ -1,5 +1,6 @@
 document.addEventListener("alpine:init", () => {
   Alpine.data("usersData", () => ({
+    isConnected: navigator.onLine,
     users: [],
     isLoading: true,
     initUsers() {

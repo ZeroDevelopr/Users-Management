@@ -124,6 +124,13 @@
                 </div>
             </div>
         </template>
+        <template x-if="!isConnected">
+            <div
+                class="black-text font-bold capitalize md:text-xl flex justify-center absolute top-[62%] right-0 left-0">
+                <p>Your device is <span class="amber-text">not connected</span> to the internet <span
+                        class="text-3xl">:(</span></p>
+            </div>
+        </template>
         <!-- user list in mobile mode ------ -->
         <ul class="collapsible popout md:hidden">
             <template x-for="user in users">
