@@ -3,6 +3,11 @@ document.addEventListener("alpine:init", () => {
     isConnected: navigator.onLine,
     users: [],
     isLoading: true,
+    checkConnection() {
+      window.addEventListener("online", () => {
+        window.location.reload();
+      });
+    },
     initUsers() {
       axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
         this.users = res.data;
