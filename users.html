@@ -97,7 +97,8 @@
         </div>
         <!-- add button ------ -->
         <button id="add-user-button"
-            class="btn amber accent-3 black-text font-bold capitalize text-xl w-full md:w-1/3 md:ml-6 rounded-md waves-effect waves-light z-depth-2">
+            class="btn amber accent-3 black-text font-bold capitalize text-xl w-full md:w-1/3 md:ml-6 rounded-md waves-effect waves-light z-depth-2"
+            x-on:click="showAddModal = true">
             <i class="fa-solid fa-plus" style="color: #000000;"></i>
             Add User
         </button>
@@ -214,9 +215,16 @@
     <!-- user list section ---------end---------------------------------- -->
 
     <!-- add user modal ---------start---------------------------------------------------------------- -->
-    <div id="add-user-modal-back" class="fixed w-full h-full bg-black/50 top-0 left-0 z-10 hidden"></div>
+    <div id="add-user-modal-back" class="fixed w-full h-full bg-black/50 top-0 left-0 z-10" x-show="showAddModal"
+        x-on:click="showAddModal = false" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0">
+    </div>
+
     <div id="add-user-modal"
-        class="w-full h-2/3 md:w-8/12 md:h-1/2 fixed bg-gray-900 left-0 right-0 -bottom-2/3 px-10 py-2 mx-auto z-10 rounded-t-3xl z-depth-2 transition-all duration-500 ease-in-out">
+        class="w-full h-2/3 md:w-8/12 md:h-1/2 fixed bg-gray-900 left-0 right-0 -bottom-2/3 px-10 py-2 mx-auto z-10 rounded-t-3xl z-depth-2 transition-all duration-500 ease-in-out"
+        x-bind:class="{'show':showAddModal}">
         <h5 class="font-bold text-2xl amber-text text-accent-3 flex justify-center items-center mt-6">
             <i class="fa-solid fa-user-plus mr-1" style="color: #ffc400;"></i>
             Add User

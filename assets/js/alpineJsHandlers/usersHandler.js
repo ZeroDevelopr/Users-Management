@@ -3,6 +3,7 @@ document.addEventListener("alpine:init", () => {
     isConnected: navigator.onLine,
     users: [],
     isLoading: true,
+    showAddModal: false,
     checkConnection() {
       window.addEventListener("online", () => {
         window.location.reload();
