@@ -86,7 +86,7 @@
     <!-- navbar section ---------end---------------------------------- -->
 
     <!-- top actions section ---------start---------------------------------------------------------------- -->
-    <section id="top-actions-section" class="w-11/12 md:w-8/12 max-w-7xl mx-auto mt-10 md:flex items-center">
+    <section class="w-11/12 md:w-8/12 max-w-7xl mx-auto mt-10 md:flex items-center">
         <!-- search section ------ -->
         <div class="input-field md:w-2/3">
             <input id="search" type="text" class="validate">
@@ -96,7 +96,7 @@
             </label>
         </div>
         <!-- add button ------ -->
-        <button id="add-user-button"
+        <button
             class="btn amber accent-3 black-text font-bold capitalize text-xl w-full md:w-1/3 md:ml-6 rounded-md waves-effect waves-light z-depth-2"
             x-on:click="showAddModal = true">
             <i class="fa-solid fa-plus" style="color: #000000;"></i>
@@ -106,7 +106,7 @@
     <!-- top actions section ---------end---------------------------------- -->
 
     <!-- user list section ---------start---------------------------------------------------------------- -->
-    <section class="user-list-section w-11/12 max-w-7xl min-w-max md:w-8/12 mx-auto mt-6 mb-28" x-init="initUsers()">
+    <section class="w-11/12 max-w-7xl min-w-max md:w-8/12 mx-auto mt-6 mb-28" x-init="initUsers()">
         <!-- preloader animation ------ -->
         <template x-if="isLoading">
             <div class="flex justify-center absolute top-1/2 right-0 left-0">
@@ -220,7 +220,7 @@
     <!-- user list section ---------end---------------------------------- -->
 
     <!-- add user modal ---------start---------------------------------------------------------------- -->
-    <div id="add-user-modal-back" class="fixed w-full h-full bg-black/50 top-0 left-0 z-10" x-show="showAddModal"
+    <div class="fixed w-full h-full bg-black/50 top-0 left-0 z-10" x-show="showAddModal"
         x-on:click="showAddModal = false" x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
         x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100"
