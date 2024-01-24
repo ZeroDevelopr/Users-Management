@@ -88,8 +88,8 @@
     <!-- top actions section ---------start---------------------------------------------------------------- -->
     <section class="w-11/12 md:w-8/12 max-w-7xl mx-auto mt-10 md:flex items-center">
         <!-- search section ------ -->
-        <div class="input-field md:w-2/3">
-            <input id="search" type="text" class="validate">
+        <div class="input-field md:w-2/3" x-init="$watch('searchInput', value => searchUser(value))">
+            <input id="search" type="text" class="validate" x-model="searchInput">
             <label for="search">
                 <i id="icon-magnifier" class="fa-solid fa-magnifying-glass"></i>
                 Search

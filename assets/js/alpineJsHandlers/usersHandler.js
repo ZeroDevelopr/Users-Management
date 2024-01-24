@@ -1,6 +1,7 @@
 document.addEventListener("alpine:init", () => {
   Alpine.data("usersData", () => ({
     isConnected: navigator.onLine,
+    staticUsers: [],
     users: [],
     visibleUsers: [],
     isLoading: true,
@@ -8,6 +9,7 @@ document.addEventListener("alpine:init", () => {
     totalPages: null,
     visibleRows: 4,
     currentPage: 1,
+    searchInput: null,
     checkConnection() {
       window.addEventListener("online", () => {
         window.location.reload();
@@ -15,6 +17,7 @@ document.addEventListener("alpine:init", () => {
     },
     initUsers() {
       axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+        this.staticUsers = res.data;
         this.users = res.data;
         this.updatePagination();
         this.isLoading = false;
@@ -47,6 +50,17 @@ document.addEventListener("alpine:init", () => {
       } else if (this.visibleRows > this.users.length) {
         this.visibleRows = this.users.length;
       }
+      this.currentPage = 1;
+      this.updatePagination();
+    },
+    searchUser(value) {
+      const lowerCaseValue = value.toLowerCase();
+      this.users = this.staticUsers.filter(
+        (user) =>
+          user.name.toLowerCase().includes(lowerCaseValue) ||
+          user.username.toLowerCase().includes(lowerCaseValue) ||
+          user.email.toLowerCase().includes(lowerCaseValue)
+      );
       this.currentPage = 1;
       this.updatePagination();
     },
