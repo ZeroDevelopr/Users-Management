@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/materialize/css/materialize.min.css" />
     <link rel="stylesheet" href="./assets/css/output-tailwind.css" />
-    <script src="https://kit.fontawesome.com/c93de71cfa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Application</title>
 </head>
@@ -98,7 +98,7 @@
         <!-- add button ------ -->
         <button
             class="btn amber accent-3 black-text font-bold capitalize text-xl w-full md:w-1/3 md:ml-6 rounded-md waves-effect waves-light z-depth-2"
-            x-on:click="showAddModal = true">
+            x-on:click="isShowAddModal = true">
             <i class="fa-solid fa-plus" style="color: #000000;"></i>
             Add User
         </button>
@@ -109,7 +109,7 @@
     <section class="w-11/12 max-w-7xl min-w-max md:w-8/12 mx-auto mt-6 mb-28" x-init="initUsers()">
         <!-- preloader animation ------ -->
         <template x-if="isLoading">
-            <div class="flex justify-center absolute top-1/2 right-0 left-0">
+            <div class="flex justify-center absolute top-1/2 right-0 left-0 z-50">
                 <div class="preloader-wrapper big active">
                     <div class="spinner-layer spinner-yellow-only">
                         <div class="circle-clipper left">
@@ -127,8 +127,10 @@
         </template>
         <template x-if="!isConnected">
             <div
-                class="black-text font-bold capitalize md:text-xl flex justify-center absolute top-[62%] right-0 left-0">
-                <p>Your device is <span class="amber-text">not connected</span> to the internet <span
+                class="black-text font-bold capitalize md:text-xl flex justify-center items-center absolute top-[62%] right-0 left-0 rounded-2xl">
+                <i class="fa-duotone fa-wifi-exclamation fa-2xl"
+                    style="--fa-primary-color: #ee0000; --fa-secondary-color: #ff7766; --fa-secondary-opacity: 1;"></i>
+                <p class="ml-1">Your device is <span class="amber-text">not connected</span> to the internet <span
                         class="text-3xl">:(</span></p>
             </div>
         </template>
@@ -220,8 +222,8 @@
     <!-- user list section ---------end---------------------------------- -->
 
     <!-- add user modal ---------start---------------------------------------------------------------- -->
-    <div class="fixed w-full h-full bg-black/50 top-0 left-0 z-10" x-show="showAddModal"
-        x-on:click="showAddModal = false" x-transition:enter="transition ease-out duration-300"
+    <div class="fixed w-full h-full bg-black/50 top-0 left-0 z-10" x-show="isShowAddModal"
+        x-on:click="isShowAddModal = false" x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
         x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0">
@@ -229,7 +231,7 @@
 
     <div id="add-user-modal"
         class="w-full h-2/3 md:w-8/12 md:h-1/2 fixed bg-gray-900 left-0 right-0 -bottom-2/3 px-10 py-2 mx-auto z-10 rounded-t-3xl z-depth-2 transition-all duration-500 ease-in-out"
-        x-bind:class="{'show':showAddModal}">
+        x-bind:class="{'show':isShowAddModal}">
         <h5 class="font-bold text-2xl amber-text text-accent-3 flex justify-center items-center mt-6">
             <i class="fa-solid fa-user-plus mr-1" style="color: #ffc400;"></i>
             Add User
@@ -237,25 +239,39 @@
         <form>
             <div class="md:flex flex-wrap justify-evenly">
                 <div class="input-field md:inline-block md:w-5/12 px-0">
-                    <input id="name" type="text" class="validate text-white">
+                    <input id="name" type="text" class="validate text-white" x-model="newUserInfo.name">
                     <label for="name">Name:</label>
                 </div>
                 <div class="input-field md:inline-block md:w-5/12 px-0">
-                    <input id="username" type="text" class="validate text-white">
+                    <input id="username" type="text" class="validate text-white" x-model="newUserInfo.username">
                     <label for="username">Username:</label>
                 </div>
                 <div class="input-field md:inline-block md:w-5/12 px-0">
-                    <input id="email" type="text" class="validate text-white">
+                    <input id="email" type="text" class="validate text-white" x-model="newUserInfo.email">
                     <label for="email">Email:</label>
                 </div>
                 <div class="input-field md:inline-block md:w-5/12 px-0">
-                    <input id="address" type="text" class="validate text-white">
+                    <input id="address" type="text" class="validate text-white" x-model="addressInput">
                     <label for="address">Address:</label>
                 </div>
             </div>
             <div class="flex justify-center md:mt-5">
                 <button type="button"
-                    class="btn amber accent-3 black-text font-bold capitalize text-xl w-36 rounded-md waves-effect waves-light">Submit</button>
+                    class="btn amber accent-3 black-text font-bold capitalize w-36 rounded-md waves-effect waves-light"
+                    x-on:click="submitUserInfo()" x-bind:class="{'pointer-events-none':isProcessing}">
+                    <span class="text-sm flex justify-between" x-show="isProcessing">
+                        <svg class="animate-spin -ml-1 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                            </circle>
+                            <path class="opacity-75" fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                            </path>
+                        </svg>
+                        <span>Processing...</span>
+                    </span>
+                    <span class="text-xl flex justify-center" x-show="!isProcessing">Submit</span>
+                </button>
             </div>
         </form>
     </div>

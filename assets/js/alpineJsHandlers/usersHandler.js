@@ -3,13 +3,24 @@ document.addEventListener("alpine:init", () => {
     isConnected: navigator.onLine,
     staticUsers: [],
     users: [],
+    addressInput: null,
     visibleUsers: [],
     isLoading: true,
-    showAddModal: false,
+    isProcessing: false,
+    isShowAddModal: false,
     totalPages: null,
     visibleRows: 4,
     currentPage: 1,
     searchInput: null,
+    newUserInfo: {
+      name: null,
+      username: null,
+      email: null,
+      address: {
+        city: null,
+        street: null,
+      },
+    },
     checkConnection() {
       window.addEventListener("online", () => {
         window.location.reload();
@@ -63,6 +74,57 @@ document.addEventListener("alpine:init", () => {
       );
       this.currentPage = 1;
       this.updatePagination();
+    },
+    submitUserInfo() {
+      if (!this.isConnected) {
+        M.toast({
+          html: '<i class="fa-duotone fa-wifi-exclamation fa-2xl" style="--fa-primary-color: #ee0000; --fa-secondary-color: #ff7766; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Your Device Is Not Connected To The Internet :(</span>',
+          classes:
+            "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
+        });
+      } else if (
+        !this.newUserInfo.name ||
+        !this.newUserInfo.username ||
+        !this.newUserInfo.email ||
+        !this.addressInput
+      ) {
+        M.toast({
+          html: '<i class="fa-duotone fa-file-pen fa-xl" style="--fa-primary-color: #312e81; --fa-secondary-color: #4f46e5; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Please fill in all required fields.</span>',
+          classes:
+            "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
+        });
+      } else if (!this.addressInput || !this.addressInput.includes("-")) {
+        M.toast({
+          html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ee0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Separate the city and street with a "-" in the address.</span>',
+          classes:
+            "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
+        });
+      } else {
+        this.isProcessing = true;
+        this.isLoading = true;
+        const addressParts = this.addressInput.split("-");
+        this.newUserInfo.address.city = addressParts[0].trim();
+        this.newUserInfo.address.street = addressParts[1].trim();
+        axios
+          .post("https://jsonplaceholder.typicode.com/users", this.newUserInfo)
+          .then((res) => {
+            if (res.status === 201) {
+              this.staticUsers.push(res.data);
+              this.updatePagination();
+              M.toast({
+                html: '<i class="fa-duotone fa-circle-check fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #00bb00; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">New user added successfully!</span>',
+                classes:
+                  "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
+              });
+            }
+          })
+          .finally(() => {
+            this.isProcessing = false;
+            this.isLoading = false;
+            this.isShowAddModal = false;
+            document.querySelector("form").reset();
+          });
+      }
     },
   }));
 });
