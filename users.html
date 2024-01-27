@@ -108,8 +108,8 @@
     <!-- user list section ---------start---------------------------------------------------------------- -->
     <section class="w-11/12 max-w-7xl min-w-max md:w-8/12 mx-auto mt-6 mb-28" x-init="initUsers()">
         <!-- preloader animation ------ -->
-        <template x-if="isLoading">
-            <div class="flex justify-center absolute top-1/2 right-0 left-0 z-50">
+        <template x-if="isLoading || !isConnected">
+            <div class="flex justify-center fixed top-1/2 right-0 left-0 z-50">
                 <div class="preloader-wrapper big active">
                     <div class="spinner-layer spinner-yellow-only">
                         <div class="circle-clipper left">
@@ -127,11 +127,15 @@
         </template>
         <template x-if="!isConnected">
             <div
-                class="black-text font-bold capitalize md:text-xl flex justify-center items-center absolute top-[62%] right-0 left-0 rounded-2xl">
+                class="bg-gray-900 text-white w-max mx-auto py-2 px-4 md:py-3 md:px-6 border-2 border-solid !border-[#ffc400] font-bold capitalize md:text-xl flex items-center fixed top-[62%] right-0 left-0 rounded-2xl z-50">
                 <i class="fa-duotone fa-wifi-exclamation fa-2xl"
                     style="--fa-primary-color: #ee0000; --fa-secondary-color: #ff7766; --fa-secondary-opacity: 1;"></i>
-                <p class="ml-1">Your device is <span class="amber-text">not connected</span> to the internet <span
-                        class="text-3xl">:(</span></p>
+                <p class="ml-2 flex items-center">
+                    Your device is
+                    <span class="amber-text mx-2">not connected</span>
+                    to the internet
+                    <span class="text-3xl ml-2 relative bottom-[0.18rem]">:(</span>
+                </p>
             </div>
         </template>
         <!-- user list in mobile mode ------ -->

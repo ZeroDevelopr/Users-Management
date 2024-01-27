@@ -542,8 +542,8 @@ video {
   position: fixed;
 }
 
-.absolute {
-  position: absolute;
+.relative {
+  position: relative;
 }
 
 .-bottom-2\/3 {
@@ -552,6 +552,10 @@ video {
 
 .bottom-0 {
   bottom: 0px;
+}
+
+.bottom-\[0\.18rem\] {
+  bottom: 0.18rem;
 }
 
 .left-0 {
@@ -591,6 +595,11 @@ video {
   margin-right: 0.25rem;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -627,6 +636,10 @@ video {
 
 .ml-10 {
   margin-left: 2.5rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
 }
 
 .ml-4 {
@@ -717,6 +730,11 @@ video {
   width: 100%;
 }
 
+.w-max {
+  width: -moz-max-content;
+  width: max-content;
+}
+
 .min-w-max {
   min-width: -moz-max-content;
   min-width: max-content;
@@ -803,8 +821,21 @@ video {
   border-top-right-radius: 1.5rem;
 }
 
+.border-2 {
+  border-width: 2px;
+}
+
+.border-solid {
+  border-style: solid;
+}
+
 .border-none {
   border-style: none;
+}
+
+.\!border-\[\#ffc400\] {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(255 196 0 / var(--tw-border-opacity)) !important;
 }
 
 .bg-black\/50 {
@@ -1065,6 +1096,16 @@ video {
 
   .md\:bg-\[url\(\'\/assets\/image\/pattern\.png\'\)\] {
     background-image: url('/assets/image/pattern.png');
+  }
+
+  .md\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .md\:py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
   }
 
   .md\:text-xl {
