@@ -1,6 +1,6 @@
 document.addEventListener("alpine:init", () => {
   Alpine.data("usersData", () => ({
-    isConnected: navigator.onLine,
+    isConnected: null,
     staticUsers: [],
     users: [],
     addressInput: null,
@@ -22,9 +22,16 @@ document.addEventListener("alpine:init", () => {
       },
     },
     checkConnection() {
-      window.addEventListener("online", () => {
-        window.location.reload();
-      });
+      this.isConnected = navigator.onLine;
+      setInterval(() => {
+        const isOnline = navigator.onLine;
+        if (this.isConnected !== isOnline) {
+          this.isConnected = isOnline;
+          if (isOnline) {
+            window.location.reload();
+          }
+        }
+      }, 3000);
     },
     initUsers() {
       axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {

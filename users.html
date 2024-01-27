@@ -210,9 +210,9 @@
                 <i class="fa-solid fa-angle-left fa-xl amber accent-3 py-[20.508px] px-[13.61px] mr-1 rounded-full waves-effect waves-light"
                     style="color: #000000;" x-on:click="previousPage()"></i>
                 <div class="amber accent-3 text-black max-w-max py-2 px-4 rounded-full">
-                    <span x-text="isConnected ? currentPage : '?'"></span>
+                    <span x-text="currentPage"></span>
                     <span>/</span>
-                    <span x-text="isConnected ? totalPages : '?'"></span>
+                    <span x-text="totalPages"></span>
                 </div>
                 <i class="fa-solid fa-angle-right fa-xl amber accent-3 py-[20.508px] px-[13.61px] ml-1 rounded-full waves-effect waves-light"
                     style="color: #000000;" x-on:click="nextPage()"></i>
