@@ -3,6 +3,7 @@ document.addEventListener("alpine:init", () => {
     isConnected: null,
     staticUsers: [],
     users: [],
+    staticUserId: 11,
     addressInput: null,
     visibleUsers: [],
     isLoading: true,
@@ -116,6 +117,8 @@ document.addEventListener("alpine:init", () => {
           .post("https://jsonplaceholder.typicode.com/users", this.newUserInfo)
           .then((res) => {
             if (res.status === 201) {
+              res.data.id = this.staticUserId;
+              this.staticUserId++;
               this.staticUsers.push(res.data);
               this.updatePagination();
               M.toast({
