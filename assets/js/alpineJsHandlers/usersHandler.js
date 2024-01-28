@@ -101,7 +101,17 @@ document.addEventListener("alpine:init", () => {
           classes:
             "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
         });
-      } else if (!this.addressInput || !this.addressInput.includes("-")) {
+      } else if (
+        document.getElementById("email").classList.contains("invalid")
+      ) {
+        M.toast({
+          html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ee0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Please enter a valid email address.</span>',
+          classes:
+            "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
+        });
+      } else if (
+        document.getElementById("address").classList.contains("invalid")
+      ) {
         M.toast({
           html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ee0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Separate the city and street with a "-" in the address.</span>',
           classes:
