@@ -1094,8 +1094,8 @@ video {
     width: 66.666667%;
   }
 
-  .md\:bg-\[url\(\'\/assets\/image\/pattern\.png\'\)\] {
-    background-image: url('/assets/image/pattern.png');
+  .md\:bg-\[url\(\'\.\/assets\/image\/pattern\.png\'\)\] {
+    background-image: url('./assets/image/pattern.png');
   }
 
   .md\:px-6 {

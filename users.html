@@ -99,7 +99,7 @@
         <button
             class="btn amber accent-3 black-text font-bold capitalize text-xl w-full md:w-1/3 md:ml-6 rounded-md waves-effect waves-light z-depth-2"
             x-on:click="isShowAddModal = true">
-            <i class="fa-solid fa-plus" style="color: #000000;"></i>
+            <i class="fa-solid fa-user-plus" style="color: #000000;"></i>
             Add User
         </button>
     </section>
@@ -146,24 +146,24 @@
                         class="collapsible-header amber accent-3 black-text font-semibold rounded-md border-none -mt-2 z-depth-2">
                         <i class="fa-solid fa-circle-chevron-down transition-all duration-500 ease-in-out user-item-arrow-icon"
                             style="color: #000000;"></i>
-                        <span x-text="user.name"></span>
+                        <span class="capitalize" x-text="user.id + '. ' + user.name"></span>
                     </div>
                     <div class="collapsible-body white-text text-sm rounded-b-md mb-2 border-none z-depth-2">
                         <div class="float-right">
-                            <i class="fa-solid fa-trash-can fa-xl" style="color: #dc2626;"></i>
-                            <i class="fa-solid fa-pen-to-square fa-xl ml-1" style="color: #4f46e5;"></i>
+                            <i class="fa-solid fa-pen-to-square fa-xl" style="color: #4f46e5;"></i>
+                            <i class="fa-solid fa-trash-can fa-xl ml-1" style="color: #dc2626;"></i>
                         </div>
                         <div>
-                            <span>Username: </span>
+                            <span class="amber-text">Username: </span>
                             <span x-text="'@' + user.username"></span>
                         </div>
                         <div>
-                            <span>Email: </span>
+                            <span class="amber-text">Email: </span>
                             <span x-text="user.email"></span>
                         </div>
                         <div>
-                            <span>Address: </span>
-                            <span x-text="user.address.city + ' - ' + user.address.street"></span>
+                            <span class="amber-text">Address: </span>
+                            <span class="capitalize" x-text="user.address.city + ' - ' + user.address.street"></span>
                         </div>
                     </div>
                 </li>
@@ -186,13 +186,13 @@
                     <template x-for="user in visibleUsers">
                         <tr>
                             <td x-text="user.id"></td>
-                            <td x-text="user.name"></td>
+                            <td x-text="user.name" class="capitalize"></td>
                             <td x-text="'@' + user.username"></td>
                             <td x-text="user.email"></td>
-                            <td x-text="user.address.city + ' - ' + user.address.street"></td>
+                            <td x-text="user.address.city + ' - ' + user.address.street" class="capitalize"></td>
                             <td>
-                                <i class="fa-solid fa-trash-can fa-xl" style="color: #dc2626;"></i>
-                                <i class="fa-solid fa-pen-to-square fa-xl ml-1" style="color: #4f46e5;"></i>
+                                <i class="fa-solid fa-pen-to-square fa-xl" style="color: #4f46e5;"></i>
+                                <i class="fa-solid fa-trash-can fa-xl ml-1" style="color: #dc2626;"></i>
                             </td>
                         </tr>
                     </template>
