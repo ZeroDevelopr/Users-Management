@@ -89,7 +89,7 @@
     <section class="w-11/12 md:w-8/12 max-w-7xl mx-auto mt-10 md:flex items-center">
         <!-- search section ------ -->
         <div class="input-field md:w-2/3" x-init="$watch('searchInput', value => searchUser(value))">
-            <input id="search" type="text" class="validate" x-model="searchInput">
+            <input id="search" type="text" class="font-bold" x-model="searchInput">
             <label for="search">
                 <i id="icon-magnifier" class="fa-solid fa-magnifying-glass"></i>
                 Search
@@ -151,7 +151,8 @@
                     <div class="collapsible-body white-text text-sm rounded-b-md mb-2 border-none z-depth-2">
                         <div class="float-right">
                             <i class="fa-solid fa-pen-to-square fa-xl" style="color: #4f46e5;"></i>
-                            <i class="fa-solid fa-trash-can fa-xl ml-1" style="color: #dc2626;"></i>
+                            <i class="fa-solid fa-trash-can fa-xl ml-1" style="color: #dc2626;"
+                                x-on:click="deleteUserToast(user.id)"></i>
                         </div>
                         <div>
                             <span class="amber-text">Username: </span>
@@ -192,7 +193,8 @@
                             <td x-text="user.address.city + ' - ' + user.address.street" class="capitalize"></td>
                             <td>
                                 <i class="fa-solid fa-pen-to-square fa-xl" style="color: #4f46e5;"></i>
-                                <i class="fa-solid fa-trash-can fa-xl ml-1" style="color: #dc2626;"></i>
+                                <i class="fa-solid fa-trash-can fa-xl ml-1" style="color: #dc2626;"
+                                    x-on:click="deleteUserToast(user.id)"></i>
                             </td>
                         </tr>
                     </template>

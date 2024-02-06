@@ -146,5 +146,41 @@ document.addEventListener("alpine:init", () => {
           });
       }
     },
+    deleteUserToast(userId) {
+      M.toast({
+        html: `<span>
+                   <i class="fa-duotone fa-circle-question fa-xl mr-1"
+                       style="--fa-primary-color: #ffffff; --fa-secondary-color: #4f46e5; --fa-secondary-opacity: 1;"></i>
+                   Delete user #${userId}?
+               </span>
+               <button class="btn-flat ml-10" style="color: #ee0000;" x-on:click="deleteUser(${userId})">
+                   <i class="fa-solid fa-user-slash fa-2xl mr-1" style="color: #ee0000;"></i>
+                   Delete
+               </button>`,
+        classes:
+          "amber accent-3 black-text font-bold capitalize rounded-2xl z-depth-2",
+      });
+    },
+    deleteUser(userId) {
+      this.isLoading = true;
+      axios
+        .delete("https://jsonplaceholder.typicode.com/users/" + userId)
+        .then((res) => {
+          if (res.status === 200) {
+            this.staticUsers = this.staticUsers.filter(
+              (user) => user.id != userId
+            );
+            this.users = this.users.filter((user) => user.id != userId);
+            this.updatePagination();
+            M.toast({
+              html: `<i class="fa-duotone fa-circle-check fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #00bb00; --fa-secondary-opacity: 1;"></i>
+                     <span class="text-center ml-1">user #${userId} deleted successfully!</span>`,
+              classes:
+                "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
+            });
+          }
+        });
+      this.isLoading = false;
+    },
   }));
 });
