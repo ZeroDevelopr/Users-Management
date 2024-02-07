@@ -13,7 +13,9 @@ document.addEventListener("alpine:init", () => {
     visibleRows: 4,
     currentPage: 1,
     searchInput: null,
+    isEditing: false,
     newUserInfo: {
+      id: null,
       name: null,
       username: null,
       email: null,
@@ -181,6 +183,94 @@ document.addEventListener("alpine:init", () => {
           }
         });
       this.isLoading = false;
+    },
+    editUserModal(user) {
+      document.querySelector("form").reset();
+      this.isLoading = true;
+      this.isEditing = true;
+      axios
+        .get("https://jsonplaceholder.typicode.com/users/" + user.id)
+        .then((res) => {
+          if (res.status === 200) {
+            this.newUserInfo.id = res.data.id;
+            this.newUserInfo.name = res.data.name;
+            this.newUserInfo.username = res.data.username;
+            this.newUserInfo.email = res.data.email;
+            this.addressInput =
+              res.data.address.city + " - " + res.data.address.street;
+            this.isLoading = false;
+          }
+        });
+      this.isShowAddModal = true;
+    },
+    editUserInfo() {
+      if (!this.isConnected) {
+        M.toast({
+          html: '<i class="fa-duotone fa-wifi-exclamation fa-2xl" style="--fa-primary-color: #ee0000; --fa-secondary-color: #ff7766; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Your Device Is Not Connected To The Internet :(</span>',
+          classes:
+            "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
+        });
+      } else if (
+        !this.newUserInfo.name ||
+        !this.newUserInfo.username ||
+        !this.newUserInfo.email ||
+        !this.addressInput
+      ) {
+        M.toast({
+          html: '<i class="fa-duotone fa-file-pen fa-xl" style="--fa-primary-color: #312e81; --fa-secondary-color: #4f46e5; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Please fill in all required fields.</span>',
+          classes:
+            "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
+        });
+      } else if (
+        document.getElementById("email").classList.contains("invalid")
+      ) {
+        M.toast({
+          html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ee0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Please enter a valid email address.</span>',
+          classes:
+            "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
+        });
+      } else if (
+        document.getElementById("address").classList.contains("invalid")
+      ) {
+        M.toast({
+          html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ee0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Separate the city and street with a "-" in the address.</span>',
+          classes:
+            "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
+        });
+      } else {
+        this.isProcessing = true;
+        this.isLoading = true;
+        const addressParts = this.addressInput.split("-");
+        this.newUserInfo.address.city = addressParts[0].trim();
+        this.newUserInfo.address.street = addressParts[1].trim();
+        axios
+          .put(
+            "https://jsonplaceholder.typicode.com/users/" + this.newUserInfo.id,
+            this.newUserInfo
+          )
+          .then((res) => {
+            if (res.status === 200) {
+              const editingUserIndex = this.staticUsers.findIndex(
+                (user) => user.id == this.newUserInfo.id
+              );
+              this.staticUsers[editingUserIndex] = res.data;
+              this.isEditing = false;
+              this.updatePagination();
+              M.toast({
+                html: `<i class="fa-duotone fa-circle-check fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #00bb00; --fa-secondary-opacity: 1;"></i>
+                     <span class="text-center ml-1">user #${res.data.id} edited successfully!</span>`,
+                classes:
+                  "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
+              });
+            }
+          })
+          .finally(() => {
+            this.isProcessing = false;
+            this.isLoading = false;
+            this.isShowAddModal = false;
+            document.querySelector("form").reset();
+          });
+      }
     },
   }));
 });

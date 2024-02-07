@@ -98,7 +98,7 @@
         <!-- add button ------ -->
         <button
             class="btn amber accent-3 black-text font-bold capitalize text-xl w-full md:w-1/3 md:ml-6 rounded-md waves-effect waves-light z-depth-2"
-            x-on:click="isShowAddModal = true">
+            x-on:click="isShowAddModal = true, isEditing = false">
             <i class="fa-solid fa-user-plus" style="color: #000000;"></i>
             Add User
         </button>
@@ -150,7 +150,8 @@
                     </div>
                     <div class="collapsible-body white-text text-sm rounded-b-md mb-2 border-none z-depth-2">
                         <div class="float-right">
-                            <i class="fa-solid fa-pen-to-square fa-xl" style="color: #4f46e5;"></i>
+                            <i class="fa-solid fa-pen-to-square fa-xl" style="color: #4f46e5;"
+                                x-on:click="editUserModal(user)"></i>
                             <i class="fa-solid fa-trash-can fa-xl ml-1" style="color: #dc2626;"
                                 x-on:click="deleteUserToast(user.id)"></i>
                         </div>
@@ -192,7 +193,8 @@
                             <td x-text="user.email"></td>
                             <td x-text="user.address.city + ' - ' + user.address.street" class="capitalize"></td>
                             <td>
-                                <i class="fa-solid fa-pen-to-square fa-xl" style="color: #4f46e5;"></i>
+                                <i class="fa-solid fa-pen-to-square fa-xl" style="color: #4f46e5;"
+                                    x-on:click="editUserModal(user)"></i>
                                 <i class="fa-solid fa-trash-can fa-xl ml-1" style="color: #dc2626;"
                                     x-on:click="deleteUserToast(user.id)"></i>
                             </td>
@@ -229,43 +231,46 @@
 
     <!-- add user modal ---------start---------------------------------------------------------------- -->
     <div class="fixed w-full h-full bg-black/50 top-0 left-0 z-10" x-show="isShowAddModal"
-        x-on:click="isShowAddModal = false" x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0">
+        x-on:click="isShowAddModal = false"
+        x-on:click.debounce.350="isEditing = false, document.querySelector('form').reset()"
+        x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
     </div>
 
     <div id="add-user-modal"
         class="w-full h-2/3 md:w-8/12 md:h-1/2 fixed bg-gray-900 left-0 right-0 -bottom-2/3 px-10 py-2 mx-auto z-10 rounded-t-3xl z-depth-2 transition-all duration-500 ease-in-out"
         x-bind:class="{'show':isShowAddModal}">
         <h5 class="font-bold text-2xl amber-text text-accent-3 flex justify-center items-center mt-6">
-            <i class="fa-solid fa-user-plus mr-1" style="color: #ffc400;"></i>
-            Add User
+            <i x-bind:class="{ 'fa-solid fa-user-plus': !isEditing, 'fa-solid fa-user-edit': isEditing }"
+                style="color: #ffc400;" class="mr-1"></i>
+            <span x-text="isEditing ? 'Edit User' : 'Add User'"></span>
         </h5>
         <form>
             <div class="md:flex flex-wrap justify-evenly">
                 <div class="input-field md:inline-block md:w-5/12 px-0">
                     <input id="name" type="text" class="validate text-white" x-model="newUserInfo.name">
-                    <label for="name">Name:</label>
+                    <label for="name" x-bind:class="{'active':isEditing}">Name:</label>
                 </div>
                 <div class="input-field md:inline-block md:w-5/12 px-0">
                     <input id="username" type="text" class="validate text-white" x-model="newUserInfo.username">
-                    <label for="username">Username:</label>
+                    <label for="username" x-bind:class="{'active':isEditing}">Username:</label>
                 </div>
                 <div class="input-field md:inline-block md:w-5/12 px-0">
                     <input id="email" type="email" class="validate text-white" x-model="newUserInfo.email">
-                    <label for="email">Email:</label>
+                    <label for="email" x-bind:class="{'active':isEditing}">Email:</label>
                 </div>
                 <div class="input-field md:inline-block md:w-5/12 px-0">
                     <input id="address" type="text" class="text-white" x-model="addressInput"
-                        x-bind:class="addressInput.includes('-') || addressInput=='' ? 'validate' : 'invalid'">
-                    <label for="address">Address:</label>
+                        x-bind:class="addressInput && !addressInput.includes('-') || !addressInput === '' ? 'invalid' : 'validate'">
+                    <label for="address" x-bind:class="{'active':isEditing}">Address:</label>
                 </div>
             </div>
             <div class="flex justify-center md:mt-5">
                 <button type="button"
                     class="btn amber accent-3 black-text font-bold capitalize w-36 rounded-md waves-effect waves-light"
-                    x-on:click="submitUserInfo()" x-bind:class="{'pointer-events-none':isProcessing}">
+                    x-on:click="isEditing ? editUserInfo() : submitUserInfo()"
+                    x-bind:class="{'pointer-events-none':isProcessing}">
                     <span class="text-sm flex justify-between" x-show="isProcessing">
                         <svg class="animate-spin -ml-1 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 24 24">
