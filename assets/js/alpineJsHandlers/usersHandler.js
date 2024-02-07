@@ -88,7 +88,7 @@ document.addEventListener("alpine:init", () => {
     submitUserInfo() {
       if (!this.isConnected) {
         M.toast({
-          html: '<i class="fa-duotone fa-wifi-exclamation fa-2xl" style="--fa-primary-color: #ee0000; --fa-secondary-color: #ff7766; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Your Device Is Not Connected To The Internet :(</span>',
+          html: '<i class="fa-duotone fa-wifi-exclamation fa-2xl" style="--fa-primary-color: #ff0000; --fa-secondary-color: #ff7766; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Your Device Is Not Connected To The Internet :(</span>',
           classes:
             "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
         });
@@ -107,7 +107,7 @@ document.addEventListener("alpine:init", () => {
         document.getElementById("email").classList.contains("invalid")
       ) {
         M.toast({
-          html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ee0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Please enter a valid email address.</span>',
+          html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ff0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Please enter a valid email address.</span>',
           classes:
             "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
         });
@@ -115,7 +115,7 @@ document.addEventListener("alpine:init", () => {
         document.getElementById("address").classList.contains("invalid")
       ) {
         M.toast({
-          html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ee0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Separate the city and street with a "-" in the address.</span>',
+          html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ff0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Separate the city and street with a "-" in the address.</span>',
           classes:
             "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
         });
@@ -155,8 +155,8 @@ document.addEventListener("alpine:init", () => {
                        style="--fa-primary-color: #ffffff; --fa-secondary-color: #4f46e5; --fa-secondary-opacity: 1;"></i>
                    Delete user #${userId}?
                </span>
-               <button class="btn-flat ml-10" style="color: #ee0000;" x-on:click="deleteUser(${userId})">
-                   <i class="fa-solid fa-user-slash fa-2xl mr-1" style="color: #ee0000;"></i>
+               <button class="btn-flat ml-10" style="color: #ff0000;" x-on:click="deleteUser(${userId})">
+                   <i class="fa-solid fa-user-slash fa-2xl mr-1" style="color: #ff0000;"></i>
                    Delete
                </button>`,
         classes:
@@ -206,7 +206,7 @@ document.addEventListener("alpine:init", () => {
     editUserInfo() {
       if (!this.isConnected) {
         M.toast({
-          html: '<i class="fa-duotone fa-wifi-exclamation fa-2xl" style="--fa-primary-color: #ee0000; --fa-secondary-color: #ff7766; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Your Device Is Not Connected To The Internet :(</span>',
+          html: '<i class="fa-duotone fa-wifi-exclamation fa-2xl" style="--fa-primary-color: #ff0000; --fa-secondary-color: #ff7766; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Your Device Is Not Connected To The Internet :(</span>',
           classes:
             "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
         });
@@ -225,7 +225,7 @@ document.addEventListener("alpine:init", () => {
         document.getElementById("email").classList.contains("invalid")
       ) {
         M.toast({
-          html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ee0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Please enter a valid email address.</span>',
+          html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ff0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Please enter a valid email address.</span>',
           classes:
             "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
         });
@@ -233,7 +233,7 @@ document.addEventListener("alpine:init", () => {
         document.getElementById("address").classList.contains("invalid")
       ) {
         M.toast({
-          html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ee0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Separate the city and street with a "-" in the address.</span>',
+          html: '<i class="fa-duotone fa-circle-xmark fa-2xl" style="--fa-primary-color: #ffffff; --fa-secondary-color: #ff0000; --fa-secondary-opacity: 1;"></i><span class="text-center ml-1">Separate the city and street with a "-" in the address.</span>',
           classes:
             "amber accent-3 black-text font-bold capitalize text-sm flex justify-center rounded-2xl z-depth-2",
         });
