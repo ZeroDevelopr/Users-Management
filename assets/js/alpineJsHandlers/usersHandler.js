@@ -8,7 +8,7 @@ document.addEventListener("alpine:init", () => {
     visibleUsers: [],
     isLoading: true,
     isProcessing: false,
-    isShowAddModal: false,
+    isShowModal: false,
     totalPages: null,
     visibleRows: 4,
     currentPage: 1,
@@ -143,7 +143,7 @@ document.addEventListener("alpine:init", () => {
           .finally(() => {
             this.isProcessing = false;
             this.isLoading = false;
-            this.isShowAddModal = false;
+            this.isShowModal = false;
             document.querySelector("form").reset();
           });
       }
@@ -201,7 +201,7 @@ document.addEventListener("alpine:init", () => {
             this.isLoading = false;
           }
         });
-      this.isShowAddModal = true;
+      this.isShowModal = true;
     },
     editUserInfo() {
       if (!this.isConnected) {
@@ -267,7 +267,7 @@ document.addEventListener("alpine:init", () => {
           .finally(() => {
             this.isProcessing = false;
             this.isLoading = false;
-            this.isShowAddModal = false;
+            this.isShowModal = false;
             document.querySelector("form").reset();
           });
       }
