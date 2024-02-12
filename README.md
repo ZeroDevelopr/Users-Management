@@ -1,5 +1,5 @@
 # Users Management App :rocket:
-Welcome to the Users Management repository by ZeroDevelopr! :slightly_smiling_face:
+Welcome to the Users Management repository by Me! :slightly_smiling_face:
 ## Overview :books:
 This repository contains the source code for a Users Management system, allowing you to effortlessly manage user data. Whether you're adding new users, editing existing ones, or simply browsing through the list, this project has got you covered. :otter::thumbsup:
 ## Features :star2:
