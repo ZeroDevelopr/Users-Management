@@ -14,6 +14,8 @@ This repository contains the source code for a Users Management system, allowing
 * [Tailwind CSS](https://tailwindcss.com/)
 * [Alpine.js](https://alpinejs.dev/)
 * [Axios](https://axios-http.com/)
+## Live Demo :white_check_mark:
+Check out the live demo [here](https://zerodevelopr.github.io/Users-Management/)!
 ## Connect with Me :people_hugging:
 + [GitHub](https://github.com/ZeroDevelopr)
 + [LinkedIn](https://linkedin.com/in/zerodevelopr)
